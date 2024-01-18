@@ -1,0 +1,24 @@
+/* google fonts  */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.swiper-pagination {
+   position: absolute;
+   left: 10px;
+   transform: translateY(-50%);
+}
+.swiper-container .swiper-pagination{
+    bottom: -30px!important;
+}
+.swiper-pagination > .swiper-pagination-bullet {
+   opacity: 1;
+   border: #f4c377 solid 1px;
+   background-color: transparent;
+}
+.swiper-pagination > .swiper-pagination-bullet-active {
+   background-color: #a06306;
+}
+
