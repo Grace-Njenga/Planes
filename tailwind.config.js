@@ -14,6 +14,11 @@ module.exports = {
     extend: {
       height: {
         '400': '32rem',
+        '90': '6rem',
+        '100%': '50px',
+      },
+      width: {
+        '100': '100px'
       }
     },
   },
