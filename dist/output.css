@@ -644,20 +644,8 @@ video {
   height: 32rem;
 }
 
-.h-\[50px\] {
-  height: 50px;
-}
-
 .h-full {
   height: 100%;
-}
-
-.h-svh {
-  height: 100svh;
-}
-
-.h-\[\] {
-  height: ;
 }
 
 .w-9\/12 {
@@ -668,20 +656,12 @@ video {
   width: 100%;
 }
 
-.-scale-0 {
-  --tw-scale-x: 0;
-  --tw-scale-y: 0;
+.-scale-x-90 {
+  --tw-scale-x: -.9;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.-scale-100 {
-  --tw-scale-x: -1;
-  --tw-scale-y: -1;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.-scale-y-100 {
-  --tw-scale-y: -1;
+.transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -758,11 +738,6 @@ video {
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
-.bg-emerald-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(167 243 208 / var(--tw-bg-opacity));
-}
-
 .bg-gray-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(55 65 81 / var(--tw-bg-opacity));
@@ -771,11 +746,6 @@ video {
 .bg-orange-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(254 215 170 / var(--tw-bg-opacity));
-}
-
-.bg-red-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
 }
 
 .bg-slate-300 {
@@ -874,6 +844,29 @@ video {
   background-color: #a06306;
 }
 
+/* body {
+   margin: 0;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 100vh;
+   background-color: #f0f0f0;
+} */
+
+.dot-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  gap: 10px;
+}
+
+.dot {
+  width:5px;
+  height:5px;
+  background-color: #d60909;
+  border-radius: 50%;
+}
+
 @media (min-width: 768px) {
   .md\:col-span-3 {
     grid-column: span 3 / span 3;
@@ -897,4 +890,3 @@ video {
     grid-template-columns: repeat(12, minmax(0, 1fr));
   }
 }
-
