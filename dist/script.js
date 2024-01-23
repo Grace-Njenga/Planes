@@ -57,16 +57,3 @@ function countUp(counterElement) {
 }
 
 
-// icos
-const iconContainer = document.getElementById("iconContainer");
-const plusIcon = document.getElementById("plusIcon");
-
-iconContainer.addEventListener("click", () => {
-   plusIcon.classList.toggle("animation-active");
-   setTimeout(() => {
-      plusIcon.classList.toggle("x");
-   }, 500); // Adjust the delay based on your animation duration
-   setTimeout(() => {
-      plusIcon.classList.toggle("check");
-   }, 1000); // Adjust the delay based on your animation duration
-});
