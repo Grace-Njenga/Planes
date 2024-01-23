@@ -17,55 +17,45 @@ const swiper = new Swiper(".swiper", {
 
 // TIMER AND COUNTER 1
 const counters = document.querySelectorAll(".counter");
-
+const counterSection = document.getElementById("counter-section");
 const options = {
-   threshold: 1,
+   root: null,
+   rootMargin: "0px",
+   threshold: 0.5,
 };
-window.addEventListener("scroll", function () {
-   const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-         if (!entry.isIntersecting) {
 
-         }
-      });
-   }, options);
-
-   counters.forEach((counter) => {
-      observer.observe(counter);
-   });
-});
-const observer = new IntersectionObserver((entries, observer) => {
-   entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-         countUp(entry.target);
-         observer.unobserve(entry.target);
-         console.log("inda");
-      } else {
-         console.log("nje");
-      }
-   });
-}, options);
+let observer = new IntersectionObserver(handleIntersection, options);
 
 counters.forEach((counter) => {
    observer.observe(counter);
 });
-function countUp(counterElement) {
-   const target = +counterElement.getAttribute("data-target");
-   let count = 0;
-   
-   const updateCounter = () => {
-      const increment = target / 100;
-      count += increment;
 
-      if (count < target) {
-         counterElement.innerHTML =
-            Math.ceil(count) + "+<br />Years of Experience";
-         // setTimeout(updateCounter, 10);
-         requestAnimationFrame(updateCounter);
+function handleIntersection(entries, observer) {
+   entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+         startCounter(entry.target);
       } else {
-         counterElement.innerHTML = target + "+<br />Years of Experience";
+         resetCounter(entry.target);
       }
-   };
+   });
+}
+
+function startCounter(counter) {
+   const target = +counter.getAttribute("data-target");
+   let count = 0;
+
+   function updateCounter() {
+      if (count < target) {
+         count++;
+         counter.innerHTML = `${count} + <br />Years of Experience`;
+         setTimeout(() => requestAnimationFrame(updateCounter), 50);
+      }
+   }
 
    updateCounter();
 }
+
+function resetCounter(counter) {
+   counter.innerHTML = "0+<br />Years of Experience";
+}
+

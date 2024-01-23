@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Counters</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 2em;
+        }
+
+        #counter-section {
+            background-color: #f0f0f0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .counter-container {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .counter {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Section 1 -->
+    <section style="background-color: #ffd700;">
+        <h1>Section 1</h1>
+        <p>This section spans the full width of the page.</p>
+    </section>
+
+    <!-- Section 2 with Counters -->
+    <section id="counter-section">
+        <h1>Counter Section</h1>
+        <p>Scroll down to see the counters in action.</p>
+        <div class="counter-container">
+            <div class="counter" data-target="25">0</div>
+            <div class="counter" data-target="75">0</div>
+            <div class="counter" data-target="85">0</div>
+        </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section style="background-color: #4caf50;">
+        <h1>Section 3</h1>
+        <p>This section spans the full width of the page.</p>
+    </section>
+
+    <!-- JavaScript for Counters -->
+    <script>
+        const counters = document.querySelectorAll('.counter');
+        const counterSection = document.getElementById('counter-section');
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5,
+        };
+
+        let observer = new IntersectionObserver(handleIntersection, options);
+
+        counters.forEach(counter => {
+            observer.observe(counter);
+        });
+
+        function handleIntersection(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startCounter(entry.target);
+                } else {
+                    resetCounter(entry.target);
+                }
+            });
+        }
+
+        function startCounter(counter) {
+            const target = +counter.getAttribute('data-target');
+            let count = 0;
+
+            function updateCounter() {
+                if (count < target) {
+                    count++;
+                    counter.innerText = `${count}+<br />Years of Experience`;
+                    requestAnimationFrame(updateCounter);
+                }
+            }
+
+            updateCounter();
+        }
+
+        function resetCounter(counter) {
+            counter.innerText = '0+<br />Years of Experience';
+        }
+    </script>
+
+</body>
+</html>
