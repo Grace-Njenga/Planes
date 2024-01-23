@@ -16,44 +16,56 @@ const swiper = new Swiper(".swiper", {
 });
 
 // TIMER AND COUNTER 1
-
 const counters = document.querySelectorAll(".counter");
 
 const options = {
    threshold: 1,
 };
+window.addEventListener("scroll", function () {
+   const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+         if (!entry.isIntersecting) {
 
+         }
+      });
+   }, options);
+
+   counters.forEach((counter) => {
+      observer.observe(counter);
+   });
+});
 const observer = new IntersectionObserver((entries, observer) => {
    entries.forEach((entry) => {
       if (entry.isIntersecting) {
          countUp(entry.target);
          observer.unobserve(entry.target);
+         console.log("inda");
+      } else {
+         console.log("nje");
       }
    });
 }, options);
 
-counters.forEach(counter => {
-  observer.observe(counter);
+counters.forEach((counter) => {
+   observer.observe(counter);
 });
-
 function countUp(counterElement) {
    const target = +counterElement.getAttribute("data-target");
    let count = 0;
-
+   
    const updateCounter = () => {
       const increment = target / 100;
       count += increment;
 
       if (count < target) {
-         counterElement.innerHTML = Math.ceil(count) + "+<br />Years of Experience";
+         counterElement.innerHTML =
+            Math.ceil(count) + "+<br />Years of Experience";
          // setTimeout(updateCounter, 10);
          requestAnimationFrame(updateCounter);
       } else {
          counterElement.innerHTML = target + "+<br />Years of Experience";
       }
    };
-   
+
    updateCounter();
 }
-
-
