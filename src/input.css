@@ -4,14 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .swiper-pagination {
    position: absolute;
    left: 10px;
    transform: translateY(-50%);
 }
-.swiper-container .swiper-pagination{
-    bottom: -30px!important;
+.swiper-container .swiper-pagination {
+   bottom: -30px !important;
 }
 .swiper-pagination > .swiper-pagination-bullet {
    opacity: 1;
@@ -39,8 +38,64 @@
 }
 
 .dot {
-   width:5px;
-   height:5px;
+   width: 5px;
+   height: 5px;
    background-color: #d60909;
    border-radius: 50%;
+}
+
+
+
+#iconContainer {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   align-content: center;
+   /* height: 100vh; */
+}
+.icon {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 40px;
+   height: 40px;
+   background-color: #3498db; /* Set your desired color */
+   border-radius: 50%;
+   cursor: pointer;
+}
+
+.plus:after {
+   content: "+";
+   font-size: 32px;
+   color: black;
+   /* text-align: center;  */
+}
+
+.x:after {
+   content: "×"; 
+   font-size: 32px;
+   color: black; 
+}
+
+.check:after {
+   content: "✔"; 
+   font-size: 32px;
+   color: black; 
+}
+
+/* Animation */
+@keyframes iconAnimation {
+   0% {
+      transform: rotate(0deg);
+   }
+   50% {
+      transform: rotate(180deg);
+   }
+   100% {
+      transform: rotate(360deg);
+   }
+}
+
+.animation-active {
+   animation: iconAnimation 3s ease-in-out;
 }
